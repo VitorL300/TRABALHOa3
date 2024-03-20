@@ -1,26 +1,19 @@
-name: CI
+name: Continuos Integration
 
-on:
-  push:
-    branches:
-      - main  # ou o nome da sua branch principal
- 
+on: pull_request
+
 jobs:
-  test: 
-    name: Testes
+  continuos-integration:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout do Código
-      uses: actions/checkout@v2
-      
-    - name: Configuração do Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 18
-    
-    - name: Instalação de Dependências
-      run: npm install
-    
-    - name: Execução dos Testes
-      run: npm test  # ou o comando específico para executar os seus testes
+      - uses: actions/checkout@v3
+      - name: Using Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.
+      - name: run install, build and test
+        run: |
+          npm install
+          npm run build 
+          npm run test
