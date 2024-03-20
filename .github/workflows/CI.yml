@@ -6,7 +6,7 @@ on:
       - main  # ou o nome da sua branch principal
 
 jobs:
-  test:
+  test: 
     name: Testes
     runs-on: ubuntu-latest
     
