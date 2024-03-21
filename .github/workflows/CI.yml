@@ -39,5 +39,4 @@ jobs:
       run: npm run find-deadcode 
 
     - name: Executar ts-prune com código ignorado
-      run: |
-        ts-prune -e -i "NotificationFactory" -i "InMemoryNotificationsRepository" -i "PrismaService"
+      run: npm run find-deadcode -e --exclude 'test'
