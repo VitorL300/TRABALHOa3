@@ -1,5 +1,5 @@
 name: CI
- 
+
 on:
   pull_request:
     branches: [ "main" ]
@@ -37,3 +37,7 @@ jobs:
     
     - name: Executar ts-prune
       run: npm run find-deadcode 
+
+    - name: Executar ts-prune com código ignorado
+      run: |
+        ts-prune -e -i "NotificationFactory" -i "InMemoryNotificationsRepository" -i "PrismaService"
