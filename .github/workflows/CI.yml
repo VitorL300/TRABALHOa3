@@ -37,6 +37,8 @@ jobs:
     
     - name: Executar ts-prune
       run: npm run find-deadcode 
+      # Executa o ts-prune para encontrar e remover código TypeScript não utilizado ou morto em seu projeto.
 
     - name: Executar ts-prune com código ignorado
       run: npm run find-deadcode -e --exclude 'test'
+      # Executa o ts-prune com a opção de exclusão para ignorar o diretório 'test' durante a análise de código morto.
