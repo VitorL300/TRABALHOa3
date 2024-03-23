@@ -17,9 +17,9 @@ jobs:
         with:
           node-version: '14' # Usando uma versão suportada pelo semantic-release
 
-      - name: Clear npm cache and reinstall dependencies
+      - name: Clear node_modules and reinstall dependencies
         run: |
-          npm cache clean --force
+          rm -rf node_modules
           npm install
 
       - name: Install semantic-release locally
@@ -28,4 +28,4 @@ jobs:
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release # Usando o npx para executar o semantic-release localmente
+        run: ./node_modules/.bin/semantic-release
