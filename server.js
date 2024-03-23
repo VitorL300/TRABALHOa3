@@ -4,7 +4,7 @@ const port = 3000
 
 function criarUsuario(body) {
     //logica para criação de usuarios no banco de dados
-    return {nome: 'usuario test', id: 1}
+    return {nome: body.name, id: 1}
 }
 
 app.post('/users', (req, res) => {
