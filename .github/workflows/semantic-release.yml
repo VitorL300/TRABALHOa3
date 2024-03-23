@@ -1,26 +1,37 @@
 name: Semantic Release
 
-on: 
+on:
   push:
     branches:
-      - main
+      
+main
 
 jobs:
   semantic_release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      
+name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14' # Usando uma versão suportada pelo semantic-release
+      
+name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # Usando uma versão suportada pelo semantic-release
 
-      - name: Install semantic-release
-        run: npm install -g semantic-release@17 # Versão compatível com o Node.js 14
+      
+name: Clear npm cache and reinstall dependencies
+      run: |
+        npm cache clean --force
+        npm install
 
-      - name: Run semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release # Usando o npx para executar o semantic-release localmente
+      
+name: Install semantic-release locally
+      run: npm install semantic-release@17
+
+      
+name: Run semantic-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npx semantic-release # Usando o npx para executar o semantic-release localmente
