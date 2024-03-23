@@ -1,6 +1,6 @@
 name: Semantic Release
 
-on:
+on: 
   push:
     branches:
       - main
