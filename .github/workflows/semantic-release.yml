@@ -25,8 +25,8 @@ jobs:
       - name: Install semantic-release locally
         run: npm install semantic-release@17
 
-      - name: Update dependencies
-        run: npm update
+      - name: Install @semantic-release/changelog
+        run: npm install @semantic-release/changelog
 
       - name: Run semantic-release
         env:
