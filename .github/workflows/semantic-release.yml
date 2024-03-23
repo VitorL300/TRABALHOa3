@@ -32,7 +32,5 @@ jobs:
       - name: Install @semantic-release/git
         run: npm install @semantic-release/git
 
-      - name: Run semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run semantic-release without token
         run: npx semantic-release
