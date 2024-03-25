@@ -3,45 +3,36 @@ name: Semantic Release
 on:
   push:
     branches:
-      
-main
+      - main
 
 jobs:
   semantic_release:
     runs-on: ubuntu-latest
 
     steps:
-      
-name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      
-name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      
-name: Clear node_modules and reinstall dependencies
-      run: |
-        rm -rf node_modules
-        npm install
+      - name: Clear node_modules and reinstall dependencies
+        run: |
+          rm -rf node_modules
+          npm install
 
-      
-name: Install semantic-release
-      run: npm install semantic-release@17
+      - name: Install semantic-release
+        run: npm install semantic-release@17
 
-      
-name: Install @semantic-release/changelog
-      run: npm install @semantic-release/changelog
+      - name: Install @semantic-release/changelog
+        run: npm install @semantic-release/changelog
 
-      
-name: Install @semantic-release/git
-      run: npm install @semantic-release/git
+      - name: Install @semantic-release/git
+        run: npm install @semantic-release/git
 
-      
-name: Run semantic-release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npx semantic-release
-﻿
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
