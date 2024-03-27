@@ -14,7 +14,6 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm install --no-package-lock --no-save @semantic-release/changelog@^8.0.0
       - run: npm run build
       - run: npx semantic-release
         env:
